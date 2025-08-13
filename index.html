@@ -51,26 +51,48 @@
         <p class="kicker">APPROCHE & VISION</p>
         <h2 class="h2">Bienvenue chez CryoCore Labs</h2>
         <div class="divider"></div>
-        <p>Nous créons des objets high‑tech utiles, concrets et portables. Prototypage rapide, matériaux robustes, électronique sûre — pas des gadgets.</p>
+        <p>Nous créons des objets high‑tech utiles, concrets et portables. Prototypage rapide, matériaux robustes, électronique sûre.</p>
 
-        <h3 id="products" class="kicker" style="margin-top:18px">NOS PRODUITS</h3>
-        <div class="products-grid">
-          <article class="card">
-            <div class="icon">🧊</div>
-            <h4>HeatCube</h4>
-            <p>Chauffe-plat portable (USB‑C / batterie). </p>
-          </article>
-          <article class="card">
-            <div class="icon">🛞</div>
-            <h4>Roulina</h4>
-            <p>Table assistée, modules amovibles.</p>
-          </article>
-          <article class="card">
-            <div class="icon">🤖</div>
-            <h4>Arm‑X</h4>
-            <p>Bras robotique modulaire.</p>
-          </article>
-        </div>
+      <h3 id="products" class="kicker" style="margin-top:18px">NOS PRODUITS</h3>
+<div class="products-grid">
+  <!-- HeatCube -->
+  <article class="card" data-product="heatcube">
+    <div class="icon"><img src="assets/heatcube.png" alt="HeatCube"></div>
+    <h4>HeatCube</h4>
+    <p>Chauffe-plat portable (USB-C / batterie).</p>
+  </article>
+
+  <!-- Roulina -->
+  <article class="card" data-product="roulina">
+    <div class="icon"><img src="assets/roulina.png" alt="Roulina"></div>
+    <h4>Roulina</h4>
+    <p>Table assistée, modules amovibles.</p>
+  </article>
+
+  <!-- Arm-X -->
+  <article class="card" data-product="armx">
+    <div class="icon"><img src="assets/arm.png" alt="Arm-X"></div>
+    <h4>Arm-X</h4>
+    <p>Bras robotique modulaire.</p>
+  </article>
+
+  <!-- Cryo Soda Fridge (NOUVEAU) -->
+  <article class="card" data-product="sodafridge">
+    <div class="icon"><img src="assets/sodafridge.png" alt="Cryo Soda Fridge"></div>
+    <h4>Cryo Soda Fridge</h4>
+    <p>Mini-frigo pour canette/bouteille (Peltier), bureau & nomade.</p>
+  </article>
+
+  <!-- Mug Lévitation (NOUVEAU) -->
+  <article class="card" data-product="levimug">
+    <div class="icon"><img src="assets/levimug.png" alt="Mug auto-chauffant en lévitation"></div>
+    <h4>Mug Lévitation</h4>
+    <p>Mug en lévitation, maintien en température + affichage °F.</p>
+  </article>
+</div>
+
+</div>
+
       </div>
 
       <div class="col" id="research">
@@ -90,5 +112,117 @@
   <footer class="footer">
     <div class="inner">© 2025 CryoCore Labs — Engineering the Future</div>
   </footer>
+<!-- MODAL -->
+<div class="modal" id="productModal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel" role="document">
+    <button class="modal__close" aria-label="Fermer" data-close>✕</button>
+    <div class="modal__content" id="modalContent"></div>
+  </div>
+</div>
+
+<!-- TEMPLATES PRODUITS (faciles à éditer) -->
+<template id="tpl-heatcube">
+  <h3 class="modal__title">HeatCube</h3>
+  <p class="modal__desc">Chauffe-plat portable (USB-C / batterie). Montée douce, maintien 65-70 °C, sécurité intégrée.</p>
+  <ul class="modal__list">
+    <li>Alim : USB-C PD / batterie Li-ion</li>
+    <li>Chauffage : PTC 120×120 mm jusqu’à 150 °C</li>
+    <li>Poids cible : &lt; 1,8 kg</li>
+  </ul>
+</template>
+
+<template id="tpl-roulina">
+  <h3 class="modal__title">Roulina</h3>
+  <p class="modal__desc">Table assistée avec modules amovibles. Déplacement stable, silencieux.</p>
+  <ul class="modal__list">
+    <li>Charge utile : 12 kg</li>
+    <li>Autonomie : 6–8 h</li>
+    <li>Sécurité : Lidar + pare-chocs souple</li>
+  </ul>
+</template>
+
+<template id="tpl-armx">
+  <h3 class="modal__title">Arm-X</h3>
+  <p class="modal__desc">Bras robotique modulaire, embouts interchangeables.</p>
+  <ul class="modal__list">
+    <li>Portée : 60 cm</li>
+    <li>Payload : 1,5 kg</li>
+    <li>Contrôle : préréglages + API locale</li>
+  </ul>
+</template>
+
+<!-- Cryo Soda Fridge -->
+<template id="tpl-sodafridge">
+  <div class="modal__image">
+    <img src="assets/sodafridge.png" alt="Cryo Soda Fridge">
+  </div>
+  <h3 class="modal__title">Cryo Soda Fridge</h3>
+  <p class="modal__desc">
+    Mini-frigo pour canettes et petites bouteilles. Refroidissement Peltier, mode bureau (USB-C PD) & nomade (batterie).
+  </p>
+  <ul class="modal__list">
+    <li>Volume utile : 1 canette 33 cl ou 50 cl (insert adaptatif)</li>
+    <li>Module Peltier + dissipateur + ventilateur silencieux</li>
+    <li>Alim : USB-C PD 12–20 V / batterie Li-ion (BMS, fusible)</li>
+    <li>Affichage : T° cible & T° interne, effet LED néon</li>
+  </ul>
+</template>
+
+
+<!-- Mug auto-chauffant en lévitation -->
+<template id="tpl-levimug">
+  <div class="modal__image">
+    <img src="assets/levimug.png" alt="Mug auto-chauffant en lévitation">
+  </div>
+  <h3 class="modal__title">Mug auto-chauffant en lévitation</h3>
+  <p class="modal__desc">
+    Mug magnétisé lévitant au-dessus de son socle. Maintien en température, affichage LED en °F, style industriel.
+  </p>
+  <ul class="modal__list">
+    <li>Stabilisation magnétique active</li>
+    <li>Chauffe/maintien : 130–160 °F (54–71 °C)</li>
+    <li>Alim : secteur/USB-C PD pour le socle, batterie interne option</li>
+    <li>Sécurités : capteur chute, anti-surchauffe, auto-cut</li>
+  </ul>
+</template>
+
+<script>
+(function(){
+  const modal = document.getElementById('productModal');
+  const content = document.getElementById('modalContent');
+
+  function openModal(product){
+    const tpl = document.getElementById('tpl-' + product);
+    if(!tpl){ return; }
+    content.innerHTML = tpl.innerHTML;
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('body--lock');
+  }
+  function closeModal(){
+    modal.setAttribute('aria-hidden', 'true');
+    content.innerHTML = '';
+    document.body.classList.remove('body--lock');
+  }
+
+  // click cards
+  document.querySelectorAll('.products-grid .card').forEach(card=>{
+    card.addEventListener('click', ()=> openModal(card.dataset.product));
+    card.style.cursor = 'pointer';
+  });
+
+  // close handlers
+  modal.addEventListener('click', (e)=>{
+    if(e.target.hasAttribute('data-close') || e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+  });
+})();
+</script>
+
+
+
 </body>
+
 </html>
